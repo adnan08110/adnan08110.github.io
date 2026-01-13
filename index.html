@@ -7,14 +7,17 @@
   <style>
     body {
       background-color: lightblue;
-      font-family: "DejaVu Serif", "Times New Roman";
+      font-family: "DejaVu Serif", "Times New Roman", serif;
       max-width: 900px;
       margin: 0 auto;
       padding: 20px;
       line-height: 1.5;
     }
 
+    /* Headings with Times New Roman & dark blue */
     h1, h2, h3 {
+      font-family: "Times New Roman", "DejaVu Serif", serif;
+      color: darkblue;
       text-align: center;
       margin-top: 1em;
     }
@@ -28,7 +31,7 @@
       text-decoration: underline;
     }
 
-    /* Video container for both desktop and mobile */
+    /* Video container */
     .video-container {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 ratio */
@@ -86,6 +89,8 @@
       document.body.style.fontSize = "16px";
       const headings = document.querySelectorAll("h1,h2,h3");
       headings.forEach(h => {
+        h.style.fontFamily = '"Times New Roman", "DejaVu Serif", serif';
+        h.style.color = "darkblue";
         if (h.tagName === "H1") h.style.fontSize = "1.8em";
         if (h.tagName === "H2") h.style.fontSize = "1.5em";
         if (h.tagName === "H3") h.style.fontSize = "1.2em";
@@ -106,6 +111,8 @@
       document.body.style.fontSize = "18px";
       const headings = document.querySelectorAll("h1,h2,h3");
       headings.forEach(h => {
+        h.style.fontFamily = '"Times New Roman", "DejaVu Serif", serif';
+        h.style.color = "darkblue";
         if (h.tagName === "H1") h.style.fontSize = "2.2em";
         if (h.tagName === "H2") h.style.fontSize = "1.8em";
         if (h.tagName === "H3") h.style.fontSize = "1.4em";
