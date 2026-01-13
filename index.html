@@ -5,29 +5,45 @@
 <title>Adnan was here, I guess</title>
 <style>
 body {
-   background-color: lightblue;
+  font-family: "DejaVu Serif", "Times New Roman";
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto; /* center the content */
 }
 
-h1 {
-  color: darkblue;
-  text-align: center;
-}
-
-h3 {
-   text-align: left;
+h1, h2, h3, p {
+  line-height: 1.4;
 }
 
 p {
-   font-family: "DejaVu Serif", "Times New Roman";
+  font-size: 18px;
 }
 
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+  p {
+    font-size: 16px;
+  }
+  .video-container {
+    max-width: 100%; /* video takes full screen width on mobile */
+  }
+}
 .video-container {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  padding-top: 25px;
   height: 0;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 800px; /* maximum width on large screens */
+  margin: 0 auto;   /* center the video */
 }
 
 .video-container iframe {
