@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adnan was here, I guess</title>
   <style>
-    /* General body styles */
     body {
       background-color: lightblue;
       font-family: "DejaVu Serif", "Times New Roman";
@@ -15,42 +14,27 @@
       line-height: 1.5;
     }
 
-    /* Headings */
-    h1 {
-      color: darkblue;
+    h1, h2, h3 {
       text-align: center;
-      font-size: 2.2em;
-    }
-
-    h2 {
-      font-size: 1.8em;
-      text-align: center;
-    }
-
-    h3 {
-      font-size: 1.4em;
       margin-top: 1em;
     }
 
-    /* Paragraphs */
     p {
       font-size: 18px;
     }
 
-    /* Links */
     a {
       color: darkblue;
       text-decoration: underline;
     }
 
-    /* Responsive YouTube video */
+    /* Video container for both desktop and mobile */
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%; /* 16:9 ratio */
       height: 0;
       overflow: hidden;
-      max-width: 800px; /* max width on desktop */
-      margin: 20px auto; /* center video with spacing */
+      margin: 20px auto;
     }
 
     .video-container iframe {
@@ -59,16 +43,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8em; }
-      h2 { font-size: 1.5em; }
-      h3 { font-size: 1.2em; }
-      p { font-size: 16px; }
-      .video-container { max-width: 100%; }
-      body { padding: 10px; }
     }
   </style>
 </head>
@@ -87,17 +61,57 @@
 
   <p>Here is a video I made a while ago. Check it out, please.</p>
 
-  <div class="video-container">
-    <iframe 
-      src="https://www.youtube-nocookie.com/embed/M9JRDbSVV00" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      allowfullscreen>
-    </iframe>
-  </div>
+  <!-- Video will be injected here -->
+  <div id="video-wrapper"></div>
 
   <h2>I'll finish this website later. For now, sayonara!</h2>
+
+  <script>
+    const container = document.getElementById("video-wrapper");
+    const isMobile = window.innerWidth <= 600;
+
+    if (isMobile) {
+      // Mobile version
+      container.innerHTML = `
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/M9JRDbSVV00" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+      document.body.style.fontSize = "16px";
+      const headings = document.querySelectorAll("h1,h2,h3");
+      headings.forEach(h => {
+        if (h.tagName === "H1") h.style.fontSize = "1.8em";
+        if (h.tagName === "H2") h.style.fontSize = "1.5em";
+        if (h.tagName === "H3") h.style.fontSize = "1.2em";
+      });
+    } else {
+      // Desktop version
+      container.innerHTML = `
+        <div class="video-container" style="max-width:800px;">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/M9JRDbSVV00" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+      document.body.style.fontSize = "18px";
+      const headings = document.querySelectorAll("h1,h2,h3");
+      headings.forEach(h => {
+        if (h.tagName === "H1") h.style.fontSize = "2.2em";
+        if (h.tagName === "H2") h.style.fontSize = "1.8em";
+        if (h.tagName === "H3") h.style.fontSize = "1.4em";
+      });
+    }
+  </script>
 
 </body>
 </html>
