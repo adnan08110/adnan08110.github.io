@@ -68,24 +68,29 @@
     }
 
     /* Mobile: normal behaviour, no tricks */
-    @media (max-width: 767px) {
-      body {
-        padding: 14px;
-      }
+  @media (max-width: 767px) {
+  /* Let content use the full screen width on mobile */
+  body {
+    max-width: none;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 
-      p {
-        font-size: 16px;
-      }
+  /* Make video truly mobile-sized */
+  .video-container {
+    width: 100%;
+    max-width: none;
+    margin: 24px auto;
+  }
 
-      h2, h3 {
-        font-size: 22px;
-      }
+  p {
+    font-size: 16px;
+  }
 
-      .video-container {
-        max-width: 100%;
-        min-width: 0;
-      }
-    }
+  h2, h3 {
+    font-size: 22px;
+  }
+}
   </style>
 </head>
 
