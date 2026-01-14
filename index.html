@@ -122,7 +122,7 @@
         const year = date.getFullYear();
 
         document.getElementById("last-updated").textContent =
-          `Last updated: ${hours}:${minutes} on ${month} ${day}, ${year}`;
+          `Last updated: ${hours}:${minutes} (GMT) on ${month} ${day}, ${year}`;
       })
       .catch(() => {
         document.getElementById("last-updated").textContent =
