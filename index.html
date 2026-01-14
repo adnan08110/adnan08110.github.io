@@ -57,14 +57,14 @@
       border: 0;
     }
 
-    /* Desktop layout */
+    /* Desktop: unchanged */
     @media (min-width: 768px) {
       .video-container {
         max-width: 900px;
       }
     }
 
-    /* Mobile layout */
+    /* Mobile: make video intentionally larger */
     @media (max-width: 767px) {
       body {
         padding: 14px;
@@ -79,9 +79,12 @@
       }
 
       .video-container {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
+        width: 120vw;
+        aspect-ratio: 16 / 9;
+        margin-left: calc(50% - 60vw);
+        margin-right: calc(50% - 60vw);
+        margin-top: 32px;
+        margin-bottom: 32px;
       }
     }
   </style>
