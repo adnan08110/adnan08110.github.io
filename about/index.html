@@ -1,1 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>Adnan was here, I guess</title>
 
+  <style>
+    body {
+      background-color: lightblue;
+      font-family: "DejaVu Serif", "Times New Roman", serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-family: "Times New Roman", "DejaVu Serif", serif;
+      color: darkblue;
+      text-align: center;
+      margin-top: 1em;
+    }
+
+    h2, h3 {
+      font-family: "Times New Roman", "DejaVu Serif", serif;
+      color: black;
+      text-align: center;
+      font-size: 28px;
+      margin-top: 1em;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    a {
+      color: darkblue;
+      text-decoration: underline;
+    }
+
+    /* === VIDEO === */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 32px auto;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Desktop: force desktop YouTube UI */
+    @media (min-width: 768px) {
+      .video-container {
+        min-width: 720px;
+      }
+    }
+
+    /* Mobile: normal behaviour, no tricks */
+  @media (max-width: 767px) {
+  /* Let content use the full screen width on mobile */
+  body {
+    max-width: none;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Make video truly mobile-sized */
+  .video-container {
+    width: 100%;
+    max-width: none;
+    margin: 24px auto;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  h2, h3 {
+    font-size: 22px;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+<script
+  data-goatcounter="https://adnan08110.goatcounter.com/count"
+  async
+  src="//gc.zgo.at/count.js">
+</script>
+
+  <h1>Welcome to the Adnanese corner of the internet!</h1>
+  <br>
+
+  <h3>A cool intro, I guess...</h3>
+  <p>My name is Adnan Mohamoud, and I am just a curious guy sometimes. I have a <a href="https://www.youtube.com/@adnan_2k">YouTube channel</a>. I sometimes take massive breaks, but that's because I usually run out of ideas. But don't worry, because I'm going to deal with that issue very soon.</p>
+
+  <h3>Games I play</h3>
+  <p>I am not much of a gamer. Sometimes, I feel like I don't have much time, or I am too busy revising/editing/working on the next video. Also, the PC at home isn't really built for gaming, so that limits my options. I am broke too, but yeah. I only really play Minecraft (which I pirated) and Brawlhalla.</p>
+
+  <h3>More about me!</h3>
+  <p>I don't really program much either, but that is changing. I am relearning HTML and you are reading my work right now. If you're broke (like me), you can use GitHub Pages to host your website for free. Even though you can't customize the URL (unless you use one that you've registered, which costs money), it's worth it.</p>
+
+  <p>Below is one of my videos. It is my favourite, and you can check it out here.</p>
+
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/RRya-i_XH9I"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <h2>I'll update this website over time. For now, sayonara!</h2>
+
+  <p id="last-updated">Last updated: loading…</p>
+
+  <script>
+    const owner = "adnan08110";
+    const repo = "adnan08110.github.io";
+    const filePath = "index.html";
+
+    function ordinal(day) {
+      if (day > 3 && day < 21) return day + "th";
+      switch (day % 10) {
+        case 1: return day + "st";
+        case 2: return day + "nd";
+        case 3: return day + "rd";
+        default: return day + "th";
+      }
+    }
+
+    fetch(`https://api.github.com/repos/${owner}/${repo}/commits?path=${filePath}&per_page=1`)
+      .then(res => res.json())
+      .then(data => {
+        const date = new Date(data[0].commit.committer.date);
+
+        const hours = String(date.getUTCHours()).padStart(2, "0");
+        const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+        const day = ordinal(date.getUTCDate());
+        const month = date.toLocaleString("en-GB", { month: "long", timeZone: "UTC" });
+        const year = date.getUTCFullYear();
+
+        document.getElementById("last-updated").textContent =
+          `Last updated: ${hours}:${minutes} (GMT) on ${month} ${day}, ${year}`;
+      })
+      .catch(() => {
+        document.getElementById("last-updated").textContent =
+          "Last updated: unavailable";
+      });
+  </script>
+
+</body>
+</html>
